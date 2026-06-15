@@ -1,0 +1,283 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'F1 Display';
+  src: url('https://fonts.cdnfonts.com/s/15388/Formula1-Display-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F1 Display';
+  src: url('https://fonts.cdnfonts.com/s/15388/Formula1-Display-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F1 Display';
+  src: url('https://fonts.cdnfonts.com/s/15388/Formula1-Display-Black.woff') format('woff');
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F1 Text';
+  src: url('https://fonts.cdnfonts.com/s/15388/Formula1-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'F1 Text';
+  src: url('https://fonts.cdnfonts.com/s/15388/Formula1-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --f1-red: #e10600;
+  --f1-dark: #050505;
+  --f1-card: #111116;
+  --f1-card-2: #1a1a22;
+  --f1-border: #2a2a35;
+  --f1-text: #f0f0f5;
+  --f1-muted: #9ca3af;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'F1 Text', system-ui, -apple-system, sans-serif;
+  background: var(--f1-dark);
+  color: var(--f1-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: 'F1 Display', system-ui, sans-serif;
+}
+
+.text-f1-red {
+  color: var(--f1-red);
+}
+
+.bg-f1-red {
+  background-color: var(--f1-red);
+}
+
+.border-f1-red {
+  border-color: var(--f1-red);
+}
+
+.bg-f1-dark {
+  background-color: var(--f1-dark);
+}
+
+.bg-f1-card {
+  background-color: var(--f1-card);
+}
+
+.bg-f1-card-2 {
+  background-color: var(--f1-card-2);
+}
+
+.border-f1 {
+  border-color: var(--f1-border);
+}
+
+.text-f1-muted {
+  color: var(--f1-muted);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(5, 5, 5, 0.97) 0%, rgba(10, 5, 5, 0.92) 40%, rgba(5, 5, 5, 0.95) 100%);
+}
+
+.glow-red {
+  box-shadow: 0 0 40px rgba(225, 6, 0, 0.3);
+}
+
+.glow-text {
+  text-shadow: 0 0 30px rgba(225, 6, 0, 0.4);
+}
+
+.text-glow-white {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.team-card-hover {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.team-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.driver-card {
+  background: linear-gradient(165deg, #16161d 0%, #0d0d12 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.driver-card:hover {
+  border-color: rgba(225, 6, 0, 0.5);
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(225, 6, 0, 0.12);
+}
+
+.number-box {
+  font-family: 'F1 Display', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--f1-red);
+}
+
+.clip-slant {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.clip-slant-reverse {
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.racing-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(225, 6, 0, 0.8) 20%, rgba(225, 6, 0, 0.8) 80%, transparent 100%);
+  height: 2px;
+}
+
+.racing-line-vertical {
+  background: linear-gradient(180deg, transparent 0%, rgba(225, 6, 0, 0.8) 20%, rgba(225, 6, 0, 0.8) 80%, transparent 100%);
+  width: 2px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(225, 6, 0, 0.3);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e10600 0%, #b80500 100%);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(225, 6, 0, 0.35);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-red {
+  background: linear-gradient(135deg, #ff2d2d 0%, #e10600 50%, #b80500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
