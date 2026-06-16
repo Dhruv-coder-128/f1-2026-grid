@@ -90,6 +90,34 @@ export default function DriverDetail() {
   const bio = driverBios[`${driver.first_name.toLowerCase()}-${driver.last_name.toLowerCase()}`] || `${driver.first_name} ${driver.last_name} competes in the 2026 Formula 1 World Championship with ${driver.teams?.name}.`;
   const flagCode = nationalityFlags[driver.nationality] || driver.nationality.slice(0, 2).toUpperCase();
 
+  const imageMap: Record<string, string> = {
+    'kimi-antonelli': '/drivers/kimi.avif',
+    'lewis-hamilton': '/drivers/lewis.avif',
+    'george-russell': '/drivers/george.avif',
+    'charles-leclerc': '/drivers/charles.avif',
+    'lando-norris': '/drivers/lando.avif',
+    'oscar-piastri': '/drivers/oscar.avif',
+    'max-verstappen': '/drivers/max.avif',
+    'pierre-gasly': '/drivers/pierre.avif',
+    'isack-hadjar': '/drivers/isack.avif',
+    'liam-lawson': '/drivers/liam.avif',
+    'oliver-bearman': '/drivers/oliver.avif',
+    'franco-colapinto': '/drivers/franco.avif',
+    'arvid-lindblad': '/drivers/arvid.avif',
+    'carlos-sainz': '/drivers/carlos.avif',
+    'alexander-albon': '/drivers/alexander.avif',
+    'esteban-ocon': '/drivers/estaban.avif',
+    'gabriel-bortoleto': '/drivers/gabriel.avif',
+    'fernando-alonso': '/drivers/fernando.avif',
+    'nico-hulkenberg': '/drivers/nico.avif',
+    'valtteri-bottas': '/drivers/valtteri.avif',
+    'sergio-perez': '/drivers/sergio.avif',
+    'lance-stroll': '/drivers/lance.avif',
+  };
+
+  const driverImage = imageMap[driver.id];
+
+
   const StatBox = ({ icon: Icon, label, value, color }: { icon: any; label: string; value: string | number; color?: string }) => (
     <div className="stat-card rounded-xl p-5 text-center group">
       <Icon size={24} className="mx-auto mb-3 transition-colors" style={{ color: color || teamColor }} />
@@ -109,39 +137,125 @@ export default function DriverDetail() {
         </button>
 
         {/* Header */}
-        <div className="relative rounded-2xl overflow-hidden mb-10" style={{ backgroundColor: `${teamColor}08` }}>
-          <div className="absolute top-0 left-0 w-1.5 h-full" style={{ backgroundColor: teamColor }} />
-          <div className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10 blur-3xl" style={{ backgroundColor: teamColor }} />
-          <div className="p-6 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-            <div className="flex items-center gap-6">
-              <div
-                className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl flex items-center justify-center text-white font-display font-black text-4xl sm:text-5xl border-4 relative"
-                style={{ borderColor: teamColor, backgroundColor: `${teamColor}18` }}
-              >
-                {driver.code}
-                <div className="absolute -bottom-2 -right-2 text-2xl">{getCountryFlag(flagCode)}</div>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-gray-400 text-sm uppercase tracking-wider font-bold">{driver.nationality}</span>
-                </div>
-                <h1 className="font-display font-black text-4xl sm:text-6xl text-white leading-none">
-                  {driver.first_name} <span style={{ color: teamColor }}>{driver.last_name}</span>
-                </h1>
-                <p className="text-lg text-gray-300 mt-2 font-medium">{driver.teams?.name}</p>
-              </div>
+        <div
+          className="relative rounded-3xl overflow-hidden mb-10 border border-white/10"
+          style={{
+            background: `linear-gradient(135deg, ${teamColor}20 0%, #050505 70%)`,
+          }}
+        >
+          <div
+            className="absolute inset-0 opacity-20 blur-3xl"
+            style={{ backgroundColor: teamColor }}
+          />
+
+          <div className="absolute left-6 lg:left-16 top-1/2 -translate-y-1/2 text-[180px] lg:text-[300px] font-black text-white/5 select-none">
+            {driver.number}
+          </div>
+
+          <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center p-8 lg:p-12">
+
+            <div className="flex justify-center">
+              {driverImage && (
+                <img
+                  src={driverImage}
+                  alt={`${driver.first_name} ${driver.last_name}`}
+                  className="
+            h-[400px]
+            lg:h-[550px]
+            object-contain
+            drop-shadow-[0_0_50px_rgba(0,0,0,0.9)]
+          "
+                />
+              )}
             </div>
-            <div className="flex items-center gap-4">
-              <button
-                onClick={toggleFavorite}
-                className={`p-3.5 rounded-xl border transition-all ${favorite ? 'bg-f1-red border-f1-red text-white' : 'border-white/20 text-gray-400 hover:text-white hover:border-white/40'}`}
-              >
-                <Star size={24} fill={favorite ? 'currentColor' : 'none'} />
-              </button>
-              <div className="text-right bg-black/30 rounded-xl px-5 py-3 border border-white/10">
-                <p className="font-display font-black text-5xl text-white">#{driver.number}</p>
-                <p className="text-gray-500 text-xs uppercase tracking-wider font-bold">Racing Number</p>
+
+            <div>
+
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-3xl">
+                  {getCountryFlag(flagCode)}
+                </span>
+
+                <span className="uppercase tracking-[0.25em] text-gray-400 text-sm font-bold">
+                  {driver.nationality}
+                </span>
+                {/* <div className="mt-8 flex items-right gap-4">
+
+                  <button
+                    onClick={toggleFavorite}
+                    className={`p-4 rounded-xl border transition-all ${favorite
+                      ? 'bg-f1-red border-f1-red text-white'
+                      : 'border-white/20 text-gray-400 hover:text-white'
+                      }`}
+                  >
+                    <Star
+                      size={22}
+                      fill={favorite ? 'currentColor' : 'none'}
+                    />
+                  </button>
+
+                </div> */}
               </div>
+
+              <h1 className="font-display font-black leading-none">
+                <span className="block text-white text-5xl lg:text-7xl">
+                  {driver.first_name}
+                </span>
+
+                <span
+                  className="block text-6xl lg:text-8xl"
+                  style={{ color: teamColor }}
+                >
+                  {driver.last_name}
+                </span>
+              </h1>
+
+              <p className="mt-5 text-2xl font-semibold text-white">
+                {driver.teams?.name}
+              </p>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+
+                <div className="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
+                  <p className="font-black text-3xl text-white">
+                    #{driver.number}
+                  </p>
+                  <p className="text-xs uppercase text-gray-500">
+                    Number
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
+                  <p className="font-black text-3xl text-white">
+                    {driver.points}
+                  </p>
+                  <p className="text-xs uppercase text-gray-500">
+                    Points
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
+                  <p className="font-black text-3xl text-white">
+                    {getPositionSuffix(driver.position)}
+                  </p>
+                  <p className="text-xs uppercase text-gray-500">
+                    Position
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-white/10 rounded-xl p-4 text-center">
+                  <p className="font-black text-3xl text-white">
+                    {driver.code}
+                  </p>
+                  <p className="text-xs uppercase text-gray-500">
+                    Code
+                  </p>
+                </div>
+
+              </div>
+
+
+
             </div>
           </div>
         </div>
