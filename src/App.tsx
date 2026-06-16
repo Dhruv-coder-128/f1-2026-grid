@@ -5,7 +5,9 @@ import Home from './pages/Home';
 import Drivers from './pages/Drivers';
 import DriverDetail from './pages/DriverDetail';
 import Teams from './pages/Teams';
+import TeamDetail from './pages/TeamDetail';
 import Schedule from './pages/Schedule';
+import RaceDetail from './pages/RaceDetail';
 import Regulations from './pages/Regulations';
 import NotFound from './pages/NotFound';
 import './App.css';
@@ -21,7 +23,9 @@ function App() {
             <Route path="/drivers" element={<Drivers />} />
             <Route path="/drivers/:id" element={<DriverDetail />} />
             <Route path="/teams" element={<Teams />} />
+            <Route path="/teams/:id" element={<TeamDetail />} />
             <Route path="/schedule" element={<Schedule />} />
+            <Route path="/races/:slug" element={<RaceDetail />} />
             <Route path="/regulations" element={<Regulations />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

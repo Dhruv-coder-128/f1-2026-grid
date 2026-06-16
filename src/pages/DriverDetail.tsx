@@ -175,26 +175,9 @@ export default function DriverDetail() {
                 <span className="text-3xl">
                   {getCountryFlag(flagCode)}
                 </span>
-
                 <span className="uppercase tracking-[0.25em] text-gray-400 text-sm font-bold">
                   {driver.nationality}
                 </span>
-                {/* <div className="mt-8 flex items-right gap-4">
-
-                  <button
-                    onClick={toggleFavorite}
-                    className={`p-4 rounded-xl border transition-all ${favorite
-                      ? 'bg-f1-red border-f1-red text-white'
-                      : 'border-white/20 text-gray-400 hover:text-white'
-                      }`}
-                  >
-                    <Star
-                      size={22}
-                      fill={favorite ? 'currentColor' : 'none'}
-                    />
-                  </button>
-
-                </div> */}
               </div>
 
               <h1 className="font-display font-black leading-none">

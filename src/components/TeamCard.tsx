@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Team } from '../types';
 import { Trophy, Zap, MapPin, Crown, Award } from 'lucide-react';
@@ -9,13 +10,14 @@ interface TeamCardProps {
 
 export default function TeamCard({ team, index }: TeamCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05, duration: 0.4 }}
-      className="team-card-hover rounded-2xl overflow-hidden bg-f1-card border border-white/10 relative"
-    >
+    <Link to={`/teams/${team.id}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.05, duration: 0.4 }}
+        className="team-card-hover rounded-2xl overflow-hidden bg-f1-card border border-white/10 relative"
+      >
       <div className="h-1.5" style={{ backgroundColor: team.color }} />
       <div className="p-6">
         <div className="flex items-start justify-between mb-5">
@@ -61,6 +63,7 @@ export default function TeamCard({ team, index }: TeamCardProps) {
           </div>
         </div>
       </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 }

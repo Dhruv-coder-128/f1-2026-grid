@@ -300,7 +300,7 @@ export default function Home() {
       <section className="py-24 relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/f1-detail.png)' }}
+          style={{ backgroundImage: 'url(/f1-detail.png)', opacity: 0.4}}
         />
         <div className="absolute inset-0 bg-f1-dark/90" />
         <div className="absolute inset-0 bg-gradient-to-r from-f1-dark via-transparent to-f1-dark" />

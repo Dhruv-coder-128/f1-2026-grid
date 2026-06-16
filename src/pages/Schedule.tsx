@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fetchRaces, fetchResults } from '../lib/api';
 import { fallbackRaces } from '../lib/fallbackData';
 import { Race, Result } from '../types';
-import { formatDate, getCountryFlag } from '../lib/utils';
+import { formatDate, getCountryFlag, slugify } from '../lib/utils';
 import SectionHeader from '../components/SectionHeader';
 import ErrorState from '../components/ErrorState';
 import { Trophy, MapPin, CalendarDays, ChevronRight } from 'lucide-react';
@@ -74,7 +75,7 @@ export default function Schedule() {
                 <button
                   key={race.id}
                   onClick={() => setSelectedRace(race)}
-                  className={`w-full text-left rounded-xl p-4 border transition-all ${
+                  className={`w-full text-left rounded-xl p-4 border transition-all relative group ${
                     selectedRace?.id === race.id
                       ? 'bg-f1-red/10 border-f1-red'
                       : 'bg-f1-card border-f1 hover:border-white/20'
@@ -88,9 +89,17 @@ export default function Schedule() {
                         <MapPin size={12} /> {race.circuit}
                       </p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right flex items-center gap-3">
                       <span className="text-2xl">{getCountryFlag(race.country_code)}</span>
-                      <p className="text-xs text-gray-500 mt-1">{formatDate(race.date_start)}</p>
+                      <div>
+                        <p className="text-xs text-gray-500">{formatDate(race.date_start)}</p>
+                        <Link 
+                          to={`/races/${slugify(race.name)}`}
+                          className="flex items-center gap-1 text-f1-red text-xs font-bold hover:underline"
+                        >
+                          View Details <ChevronRight size={12} />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </button>

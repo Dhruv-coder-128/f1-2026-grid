@@ -22,3 +22,10 @@ export function getCountryFlag(countryCode: string) {
   const offset = 127397;
   return String.fromCodePoint(...[...code].map(c => c.charCodeAt(0) + offset));
 }
+
+export function slugify(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
