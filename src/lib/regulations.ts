@@ -75,3 +75,5 @@ export const newsItems: NewsItem[] = [
     date: '2026-05-28',
   },
 ];
+
+
