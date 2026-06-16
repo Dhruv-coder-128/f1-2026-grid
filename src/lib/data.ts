@@ -53,3 +53,26 @@ export const nationalityFlags: Record<string, string> = {
   'Monegasque': 'MC', 'Thai': 'TH', 'Spanish': 'ES', 'Canadian': 'CA', 'German': 'DE',
   'Brazilian': 'BR', 'Argentine': 'AR', 'New Zealander': 'NZ', 'Finnish': 'FI', 'Mexican': 'MX'
 };
+
+export const teamCarImages: Record<string, string> = {
+  'alpine': '/cars/alpine.avif',
+  'aston-martin': '/cars/aston-martin.avif',
+  'audi': '/cars/audi.avif',
+  'cadillac': '/cars/cadillac.avif',
+  'ferrari': '/cars/ferrari.avif',
+  'haas': '/cars/haas.avif',
+  'mclaren': '/cars/mclaren.avif',
+  'mercedes': '/cars/mercedes.avif',
+  'racing-bulls': '/cars/racing-bulls.avif',
+  'red-bull': '/cars/redbull.avif',
+  'williams': '/cars/williams.avif'
+};
+
+export const driverImageMap: Record<string, string> = {
+  'Kimi': 'kimi', 'Lewis': 'lewis', 'George': 'george', 'Charles': 'charles',
+  'Lando': 'lando', 'Oscar': 'oscar', 'Max': 'max', 'Pierre': 'pierre',
+  'Isack': 'isack', 'Liam': 'liam', 'Oliver': 'oliver', 'Franco': 'franco',
+  'Carlos': 'carlos', 'Alexander': 'alexander', 'Esteban': 'esteban',
+  'Gabriel': 'gabriel', 'Fernando': 'fernando', 'Nico': 'nico',
+  'Valtteri': 'valtteri', 'Sergio': 'sergio', 'Lance': 'lance', 'Arvid': 'arvid'
+};

@@ -94,7 +94,7 @@ body {
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, rgba(5, 5, 5, 0.97) 0%, rgba(10, 5, 5, 0.92) 40%, rgba(5, 5, 5, 0.95) 100%);
+  background: linear-gradient(135deg, rgba(5, 5, 5, 0.814) 0%, rgba(10, 5, 5, 0.682) 40%, rgba(5, 5, 5, 0.434) 100%);
 }
 
 .glow-red {
